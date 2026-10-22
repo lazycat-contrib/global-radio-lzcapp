@@ -1,0 +1,20 @@
+package: community.lazycat.app.global-radio
+version: 1.0.0
+name: Global Radio
+description: "Online radio player with search, favorites, listening history, sleep timer and PWA support"
+author: moli-xia
+license: MIT
+homepage: https://github.com/moli-xia/global-radio
+min_os_version: 1.5.0
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "全球电台"
+    description: "在线电台播放器：电台搜索（支持中文）、播放控制、收藏与播放历史、睡眠定时器、亮暗主题与多语言，支持 PWA 安装"
+  en:
+    name: "Global Radio"
+    description: "Online radio player with search, favorites, listening history, sleep timer, themes and multi-language support"

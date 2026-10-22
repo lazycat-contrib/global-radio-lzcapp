@@ -1,0 +1,36 @@
+application:
+  subdomain: globalradio
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://globalradio:80/
+
+services:
+  globalradio:
+    # upstream: superneed/global-radio:latest (mutable channel; digest pinned)
+    image: docker.1ms.run/superneed/global-radio:latest@sha256:129ac74b8a4487a95a560f34b1c598bbd8ec169ac88a4bdb1babd444b6cc0ad3
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - -O
+        - /dev/null
+        - http://127.0.0.1/
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+usage: |
+  全球电台（GlobalRadio）是一个在线电台应用：搜索全球电台、播放与收藏、查看播放历史，
+  设置睡眠定时器，支持亮色/暗色主题与多语言界面，并可作为 PWA 安装到桌面或手机。
+
+  - 打开应用即可使用；收藏、历史记录与主题偏好保存在浏览器本地。
+  - 电台信息来自公开的电台目录服务（radio-browser 等），播放需要能访问对应的音频流地址。
+  - 更换浏览器或清理浏览器数据会丢失本地记录。
